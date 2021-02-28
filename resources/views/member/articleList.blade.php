@@ -159,6 +159,9 @@
                      <option value="9">9</option>
                      <option value="10">10</option>
               </select>
+              <div class="mt-1" style="font-size:9px;font-weight:bold;">
+                (本回饋內容僅針對教師評語給予回饋，如需要繳交修改後文章，請回到前頁選擇「發表文章」即可)
+              </div>
             </div>
 	    <div class="modal-footer">
               <span class ="articleTimeModal" style="display:none"></span>
