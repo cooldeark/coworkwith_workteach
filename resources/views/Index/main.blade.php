@@ -12,7 +12,61 @@
   </head>
   @include('template.topper')
   <body>
+<!--start -->
+<script src="//cdn.holmesmind.com/js/rtid.js"></script>
+<script src="//dmp.eland-tech.com/dmpreceiver/eland_tracker.js"></script>
+<script>
+clickforce_rtid("9465001");
+ElandTracker.Track({'source':'CAP9465',
+'trackType':'view',
+'trackSubfolderDepth':3,
+'targetType':'usual'
+});
+</script>
+<!-- Website track (tracker.js) - B.I.DMP By ClickForce -->
+<script async src="https://cdn.holmesmind.com/dmp/cft/tracker.js"></script>
+<script>
+  
+  var that=this;
+  window.cft=window.cft||function(){(cft.q=cft.q||[]).push([].slice.call(arguments))};
 
+  function delayLoading(){
+    window.setTimeout(that.loadJs,1000);
+  }
+
+  function myCFT(){
+    cft('setSiteId', 'CF-210300085348');
+  }
+
+  function setSite(){
+    window.setTimeout(that.myCFT,1000);
+  }
+
+  function loadJs(){
+  cft('setEnableCookie');
+  cft('setTPCookie');
+  setSite();
+  }
+
+  delayLoading();
+</script>
+<script>
+
+  function triggerEvent(){
+    cft('send', 'event', {
+    action: 'pageview',
+    category: '',
+    label: '',
+  });
+  }
+
+  function triggerCFT(){
+    window.setTimeout(that.triggerEvent,5000);
+  }
+
+  triggerCFT();
+</script>
+<!--end -->
     
 
     <main role="main">
