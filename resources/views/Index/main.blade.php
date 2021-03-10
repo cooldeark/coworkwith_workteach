@@ -54,7 +54,7 @@ ElandTracker.Track({'source':'CAP9465',
       });
     }
     function clickForceTriggerCFT(){
-        window.setTimeout(clickforceThat.clickForceTriggerEvent,5000);
+        window.setTimeout(clickforceThat.clickForceTriggerEvent,3000);
       }
       clickForceTriggerCFT();
 </script>
