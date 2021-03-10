@@ -20,51 +20,43 @@ clickforce_rtid("9465001");
 ElandTracker.Track({'source':'CAP9465',
 'trackType':'view',
 'trackSubfolderDepth':3,
-'targetType':'usual'
+'targetType':'pageview'
 });
 </script>
 <!-- Website track (tracker.js) - B.I.DMP By ClickForce -->
 <script async src="https://cdn.holmesmind.com/dmp/cft/tracker.js"></script>
 <script>
-  
-  var that=this;
+  var clickforceThat=this;
   window.cft=window.cft||function(){(cft.q=cft.q||[]).push([].slice.call(arguments))};
-
-  function delayLoading(){
-    window.setTimeout(that.loadJs,1000);
-  }
-
-  function myCFT(){
-    cft('setSiteId', 'CF-210300085348');
-  }
-
-  function setSite(){
-    window.setTimeout(that.myCFT,1000);
-  }
-
-  function loadJs(){
-  cft('setEnableCookie');
-  cft('setTPCookie');
-  setSite();
-  }
-
-  delayLoading();
+  function clickForceDelayLoading(){
+    window.setTimeout(clickforceThat.clickForceLoadJs,1000);
+    }
+    function clickForceMyyCFT(){
+        cft('setSiteId', 'CF-210300085348');
+        cft('setViewPercentage');
+    }
+    function clickForceSetSite(){
+        window.setTimeout(clickforceThat.clickForceMyyCFT,1000);
+    }
+    function clickForceLoadJs(){
+        cft('setEnableCookie');
+        cft('setTPCookie');
+        clickForceSetSite();
+    }
+    clickForceDelayLoading();
 </script>
 <script>
-
-  function triggerEvent(){
-    cft('send', 'event', {
-    action: 'pageview',
-    category: '',
-    label: '',
-  });
-  }
-
-  function triggerCFT(){
-    window.setTimeout(that.triggerEvent,5000);
-  }
-
-  triggerCFT();
+    function clickForceTriggerEvent(){
+      cft('send', 'event', {
+        action: 'pageview',
+        category: '',
+        label: '',
+      });
+    }
+    function clickForceTriggerCFT(){
+        window.setTimeout(clickforceThat.clickForceTriggerEvent,5000);
+      }
+      clickForceTriggerCFT();
 </script>
 <!--end -->
     
