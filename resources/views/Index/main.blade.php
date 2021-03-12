@@ -15,6 +15,7 @@
 <!--start -->
 <script src="//cdn.holmesmind.com/js/rtid.js"></script>
 <script src="//dmp.eland-tech.com/dmpreceiver/eland_tracker.js"></script>
+<script src="https://cdn.holmesmind.com/dmp/cft/triggerTracker.js"></script>
 <script>
 clickforce_rtid("9465001");
 ElandTracker.Track({'source':'CAP9465',
@@ -28,20 +29,9 @@ ElandTracker.Track({'source':'CAP9465',
 <script>
   var clickforceThat=this;
   window.cft=window.cft||function(){(cft.q=cft.q||[]).push([].slice.call(arguments))};
-  function clickForceDelayLoading(){
-    window.setTimeout(clickforceThat.clickForceLoadJs,1000);
-    }
-    function clickForceMyyCFT(){
-        cft('setSiteId', 'CF-210300085348');
-        cft('setViewPercentage');
-    }
-    function clickForceSetSite(){
-        window.setTimeout(clickforceThat.clickForceMyyCFT,1000);
-    }
-    function clickForceLoadJs(){
-        cft('setEnableCookie');
-        cft('setTPCookie');
-        clickForceSetSite();
+  function clickForceMyyCFT(){
+      cft('setSiteId', 'CF-210300085348');
+      cft('setViewPercentage');
     }
     clickForceDelayLoading();
 </script>
@@ -53,9 +43,6 @@ ElandTracker.Track({'source':'CAP9465',
         label: '',
       });
     }
-    function clickForceTriggerCFT(){
-        window.setTimeout(clickforceThat.clickForceTriggerEvent,3000);
-      }
       clickForceTriggerCFT();
 </script>
 <!--end -->
