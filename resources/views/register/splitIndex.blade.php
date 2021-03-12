@@ -15,50 +15,37 @@
   <body>
      <!--start -->
      <script src="//cdn.holmesmind.com/js/rtid.js"></script>
-     <script src="//dmp.eland-tech.com/dmpreceiver/eland_tracker.js"></script>
-     <script>
-     clickforce_rtid("9465002");
-     ElandTracker.Track({'source':'CAP9465',
-     'trackType':'click',
-     'trackSubfolderDepth':3,
-     'targetType':'register'
-     });
-     </script>
-     <!-- Website track (tracker.js) - B.I.DMP By ClickForce -->
-     <script async src="https://cdn.holmesmind.com/dmp/cft/tracker.js"></script>
-     <script>
-       var clickforceThat=this;
-       window.cft=window.cft||function(){(cft.q=cft.q||[]).push([].slice.call(arguments))};
-       function clickForceDelayLoading(){
-         window.setTimeout(clickforceThat.clickForceLoadJs,1000);
-         }
-         function clickForceMyyCFT(){
-             cft('setSiteId', 'CF-210300085348');
-             cft('setViewPercentage');
-         }
-         function clickForceSetSite(){
-             window.setTimeout(clickforceThat.clickForceMyyCFT,1000);
-         }
-         function clickForceLoadJs(){
-             cft('setEnableCookie');
-             cft('setTPCookie');
-             clickForceSetSite();
-         }
-         clickForceDelayLoading();
-     </script>
-     <script>
-         function clickForceTriggerEvent(){
-           cft('send', 'event', {
-             action: 'register',
-             category: '',
-             label: '',
-           });
-         }
-         function clickForceTriggerCFT(){
-             window.setTimeout(clickforceThat.clickForceTriggerEvent,5000);
-           }
-           clickForceTriggerCFT();
-     </script>
+  <script src="//dmp.eland-tech.com/dmpreceiver/eland_tracker.js"></script>
+  <script src="https://cdn.holmesmind.com/dmp/cft/triggerTracker.js"></script>
+  <script>
+  clickforce_rtid("9465002");
+  ElandTracker.Track({'source':'CAP9465',
+  'trackType':'click',
+  'trackSubfolderDepth':3,
+  'targetType':'register'
+  });
+  </script>
+  <!-- Website track (tracker.js) - B.I.DMP By ClickForce -->
+  <script async src="https://cdn.holmesmind.com/dmp/cft/tracker.js"></script>
+  <script>
+    var clickforceThat=this;
+    window.cft=window.cft||function(){(cft.q=cft.q||[]).push([].slice.call(arguments))};
+    function clickForceMyyCFT(){
+        cft('setSiteId', 'CF-210300085348');
+        cft('setViewPercentage');
+      }
+      clickForceDelayLoading();
+  </script>
+  <script>
+      function clickForceTriggerEvent(){
+        cft('send', 'event', {
+          action: 'register',
+          category: '',
+          label: '',
+        });
+      }
+        clickForceTriggerCFT();
+  </script>
 <!--end -->
 
    <div>
