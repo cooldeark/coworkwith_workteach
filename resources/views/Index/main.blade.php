@@ -217,9 +217,9 @@ ElandTracker.Track({'source':'CAP9465',
           <img class="rounded-circle" src="{{asset('images/man01.jpg')}}" alt="Generic placeholder image" width="140" height="140">
             <h2>吳孟霖</h2>
             <p><div class="text-center">簡介:</div><br>
-              旅⾏足跡遍布歐美、中東、亞洲，先後出版《 土耳其進行曲》、《原來，我們都忘了馬祖》、
-              《那⼀所名為旅⾏的大學》，2012年入選為墨刻台灣百⼤旅行家，2015年受邀到
-TED x TKU分享《累積的⼒量》。現為樂寫創辦人、聯發科技志工社寫作教育計劃主持人。</p>
+              旅⾏足跡遍布歐美、中東、亞洲，先後出版《 土耳其進行曲 》、《 原來，我們都忘了馬祖 》、
+              《 那⼀所名為旅⾏的大學 》，2012年入選為墨刻台灣百⼤旅行家，2015年受邀到
+TED x TKU分享《 累積的⼒量 》。現為樂寫創辦人、聯發科技志工社寫作教育計劃主持人。</p>
             
           </div>
           <div class="col-lg-4">
