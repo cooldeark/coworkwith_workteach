@@ -62,7 +62,7 @@ ElandTracker.Track({'source':'CAP9465',
             <div class="container">
               <div  class="carousel-caption text-center mb-5">
                 <h1><b>專業指導</b></h1>
-		<h1><b>讓作文能力大增</b></h1><br></br>
+                <h2 style="color:white;background-color:rgba(0,0,0,0.2);"><b>我們不僅是教練，更是陪伴你一路向前的朋友</b></h2><br></br>
                 @if(session::get('userName')==null)
 	      <p><a class="btn btn-lg btn-primary" href="{{url('/registerPage')}}" role="button">立即註冊</a></p>
                 @endif
@@ -74,7 +74,7 @@ ElandTracker.Track({'source':'CAP9465',
             <div class="container">
               <div class="carousel-caption text-center mb-5">
                 <h1 style="color:white;"><b>學員交流</b></h1>
-		<h1 style="color:white;background-color:rgba(0,0,0,0.2);"><b>讓寫作不再孤單，讓文字更有溫度</b></h1><br></br>
+		            <h2 style="color:white;background-color:rgba(0,0,0,0.2);"><b>讓學習不再孤單，讓文字更有溫度</b></h2><br></br>
                 @if(Session::get('userName')==null)
                 <p><a class="btn btn-lg btn-primary" href="{{url('/registerPage')}}" role="button">立即註冊</a></p>
                 @endif
@@ -123,14 +123,14 @@ ElandTracker.Track({'source':'CAP9465',
           <img class="rounded-circle" src="{{asset('images/part01.png')}}" alt="Generic placeholder image" width="140" height="140">
             
             <p><div class="text-center"><h2>目標導向</h2></div><br>
-              制定個人寫作目標，透過教練指導、自動化配對及線上學習，一步步完成階段性目標。</p>
+              制定個人學習目標，在能力可及範圍，自動化配對專業顧問，一步步完成階段性目標。</p>
             
           </div>
           <div class="col-lg-4">
             <img class="rounded-circle" src="{{asset('images/part02.png')}}" alt="Generic placeholder image" width="140" height="140">
             
             <p><div class="text-center"><h2>職涯發展</h2></div><br>
-              讓寫作變成一種工作能力，透過各種文字訓練及業師指導，提升職場競爭力。</p>
+              培養軟實力，結合線上課程、文字訓練及業師指導，提升職場競爭力。</p>
             
           </div>
           <div class="col-lg-4">
@@ -151,7 +151,7 @@ ElandTracker.Track({'source':'CAP9465',
         <div class="row featurette">
           <div class="col-md-7">
             
-            <h1 class="featurette-heading"><b><a href="https://cowrite30.com/portfolio/cowrite-student-lessons/" target="_blank">素養式寫作訓練</a></b> <span class="text-muted"> 學生組</span></h1>
+            <h1 class="featurette-heading"><b><a href="https://cowrite30.com/portfolio/cowrite-student-lessons/" target="_blank">素養式寫作課程</a></b> <span class="text-muted"> 學生組</span></h1>
             <p class="lead">培養學生思辨並恰當運用文字表達之能力，讓孩子學會各科學習統整，加強學習成果表現，以及增進人際互動溝通力。本課程採主題性課程計畫，透過小班制教學，達到因材施教的效果！</p>
           </div>
           <div class="col-md-5">
@@ -163,7 +163,7 @@ ElandTracker.Track({'source':'CAP9465',
 
         <div class="row featurette">
           <div class="col-md-7 order-md-2">
-            <h1 class="featurette-heading"><b><a href="https://cowrite30.com/portfolio/cowrite-dream-lessons/" target="_blank">滾動式寫作培訓</a></b> <span class="text-muted"> 成人組</span></h1>
+            <h1 class="featurette-heading"><b><a href="https://cowrite30.com/portfolio/cowrite-dream-lessons/" target="_blank">滾動式職涯訓練</a></b> <span class="text-muted"> 成人組</span></h1>
             <p class="lead">高中畢業後，有多久沒再練習寫作文，有了文字基礎能力，更要繼續精進學習，從每個月的文章進步，從流水帳到隨心所欲建構文章，從素人晉升為新銳作家，結業後還可以成為特約撰稿或專業書評，並且參加自己的發表會，寫作之路原來可以很有趣！</p>
           </div>
           <div class="col-md-5 order-md-1">
@@ -175,8 +175,8 @@ ElandTracker.Track({'source':'CAP9465',
 
         <div class="row featurette">
           <div class="col-md-7">
-            <h1 class="featurette-heading"><b><a href="https://cowrite30.com/portfolio/cowrite30-coach-training-lessons/" target="_blank">進階式寫作教學</a></b> <span class="text-muted"> 成人組</span></h1>
-            <p class="lead">啟發寫作創意，引導文章架構，協助潤飾文句，修正常見錯誤，這些都是身為寫作教練必備的能力。如果您喜歡教學實務，歡迎參加教練課程，除了可以跟一流講師切磋，還能探索文字浩瀚奧秘！</p>
+            <h1 class="featurette-heading"><b><a href="https://cowrite30.com/portfolio/cowrite30-coach-training-lessons/" target="_blank">進階式教練培訓</a></b> <span class="text-muted"> 成人組</span></h1>
+            <p class="lead">啟發寫作創意，引導文章架構，協助潤飾文句，修正常見錯誤，這些都是身為教練必備的能力。如果您喜歡教學實務，歡迎參加教練課程，除了可以跟一流講師切磋，還能探索文字浩瀚奧秘！</p>
           </div>
           <div class="col-md-5">
             
@@ -191,17 +191,17 @@ ElandTracker.Track({'source':'CAP9465',
         <div class="row">
           <div class="col-lg-4">            
             <p><div class="text-center"><h2>基礎會員</h2></div><br>
-              <br>年費600元</br>寫作講評指導<br></br><br>提供成人組及學生組寫作技巧指南，累積實力，完成的文章有機會收錄在樂寫專欄內。</br></p>
+              <br>年費600元</br>學習歷程講評指導<br></br><br>提供成人組及學生組寫作技巧指南，累積實力，完成的文章有機會收錄在樂寫專欄內。</br></p>
             
           </div>
           <div class="col-lg-4">
             <p><div class="text-center"><h2>進階會員</h2></div><br>
-              <br>年費2000元</br>寫作講評指導 + 四堂錄影課程培訓<br></br><br>成人組每完成五篇課程指定文章可獲得2000元進階課程獎勵，結業後可提供接案機會、參與商業寫作並發表作品於媒體平台，學生組亦可獲得教師親筆明信片獎勵。</br></p>
+              <br>年費2000元</br>學習歷程講評指導 + 隨選式錄影課程<br></br><br> 提供學員交流社群，參與教練小班課，結業後可提供接案機會、參與商業寫作並發表作品於媒體平台。</br></p>
             
           </div>
           <div class="col-lg-4">
             <p><div class="text-center"><h2>白金會員</h2></div><br>
-              <br>年費6000元</br>寫作講評指導 + 四堂錄影課程訓練<br>10次真人教師線上指導</br><br>成人組每完成五篇課程指定文章可獲得2000元進階課程獎勵，結業後可提供接案機會、參與商業寫作並發表作品於媒體平台，學生組亦可獲得教師親筆明信片獎勵。</br></p>
+              <br>年費6000元</br>學習歷程講評指導 + 隨選式錄影課程 + <br>10次真人教師線上指導</br><br>提供學員交流社群，參與教練1對1指導，結業後可提供接案機會、參與商業寫作並發表作品於媒體平台。</br></p>
             
           </div>
         </div>
