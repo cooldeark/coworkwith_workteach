@@ -6,7 +6,7 @@
     並請回到網站做查閱相關評語與分數，
 </p>
 <p>
-    https://www.cowrite30.ml/login
+    http://www.colearn30.com/
 </p>
 <p>
     下一篇學習單或建議題目也已經放在以下雲端連結囉，請繼續學習
@@ -24,6 +24,6 @@
     Best Regards
 </p>
 <p>
-    樂寫網
+    樂寫學習網
 </p>
     

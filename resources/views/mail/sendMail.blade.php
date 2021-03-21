@@ -6,7 +6,7 @@
     並請回到網站做登入 :
 </p>
 <p>
-    https://www.cowrite30.ml/login
+    http://www.colearn30.com/login
 </p>
 <p>
     如果有任何問題，請聯繫:
@@ -18,6 +18,6 @@
     Best Regards
 </p>
 <p>
-    樂寫網
+    樂寫學習網
 </p>
     
