@@ -9,7 +9,7 @@
     }
   </style>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top " style="background-color:#3b5e84;">
-    <a class="navbar-brand"  style="font-size: 2em;color:#fbfcf8;" href="{{url('/')}}">樂寫</a>
+    <a class="navbar-brand"  style="font-size: 2em;color:#fbfcf8;" href="{{url('/')}}">樂寫學習網</a>
     {{--手機板將上方banner內容包裝成漢堡--}}
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -27,25 +27,19 @@
             <a class="nav-link" href="https://cowrite30.com/cowrite-latest-news/" target="_blank">最新消息 <span class="sr-only"></span></a>
 	    </li>
           <li class="nav-item active">
-            <a class="nav-link" href="https://cowrite30.com/https-cowrite30-lessons/" target="_blank">課程介紹 <span class="sr-only"></span></a>
+            <a class="nav-link" href="https://cowrite30.com/https-cowrite30-lessons/" target="_blank">寫作課程 <span class="sr-only"></span></a>
+	    </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="https://taihowwantour.wixsite.com/home/ambassador" target="_blank">英文導覽 <span class="sr-only"></span></a>
+	    </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="https://taihowwantour.wixsite.com/home/culture" target="_blank">地方創生 <span class="sr-only"></span></a>
 	    </li>
           <li class="nav-item active">
             <a class="nav-link" href="https://cowrite30.com/category/樂寫出版品/" target="_blank">商業出版 <span class="sr-only"></span></a>
 	    </li>
           <li class="nav-item active">
-            <a class="nav-link" href="https://cowrite30.com/cowrite-columnist/" target="_blank">駐站作家 <span class="sr-only"></span></a>
-	    </li>
-          <li class="nav-item active">
             <a class="nav-link" href="https://cowrite30.com/2019/12/22/2020-writingcoach/" target="_blank">教練團隊 <span class="sr-only"></span></a>
-	    </li>
-<li class="nav-item active">
-            <a class="nav-link" href="https://cowrite30.com/category/樂寫書評/" target="_blank">電子書評 <span class="sr-only"></span></a>
-	    </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="https://cowrite30.com/category/樂寫主題/" target="_blank">分類主題 <span class="sr-only"></span></a>
-	    </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="https://cowrite30.com/category/行萬里路/" target="_blank">旅行故事 <span class="sr-only"></span></a>
 	    </li>
           <li class="nav-item active">
             <a class="nav-link" href="https://cowrite30.com/wind30tw/aboutus/" target="_blank">樂寫緣起 <span class="sr-only"></span></a>
