@@ -219,7 +219,7 @@ class RegisterController extends Controller
                         ['name' => 'admin', 'email' => $adminMail]
                     ]);
     
-                    $userMaillAddress='https://www.wordteach.ml/registetVerify/'.$email;
+                    $userMaillAddress='http://www.colearn30.com/registetVerify/'.$email;
                     $sendMailParams=['type'=>'registerMail','name'=>$name,'userMailAddress'=>$userMaillAddress];
                     Mail::to($to)->send(new sendMail($sendMailParams));
                 }
