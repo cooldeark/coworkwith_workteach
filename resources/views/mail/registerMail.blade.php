@@ -12,7 +12,7 @@
     如果有任何問題，請聯繫:
 </p>
 <p>
-    cowrite30@gmail.com 
+    colearn30@gmail.com 
 </p>
 <p>
     Best Regards
