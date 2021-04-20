@@ -127,7 +127,7 @@ class RegisterController extends Controller
         
         if($userEmailCheck==null&& $userNameCheck==null ){
 
-            if(strtolower($isMember)=='gaofeng' || strtolower($isMember)=='shuiwei' || strtolower($isMember)=='baoshan' || strtolower($isMember)=='pinghe' || strtolower($isMember)=='poai' || strtolower($isMember)=='happynewyear' ){
+            if(strtolower($isMember)=='gaofeng' || strtolower($isMember)=='shuiwei' || strtolower($isMember)=='baoshan' || strtolower($isMember)=='pinghe' || strtolower($isMember)=='poai' || strtolower($isMember)=='shuiyuan' || strtolower($isMember)=='tongan' || strtolower($isMember)=='mediatek' ){
                 $createUser=studentTeacher::create([
                     'email'=>$email,
                     'password'=>$password, 
@@ -208,7 +208,7 @@ class RegisterController extends Controller
                 
                 $adminMail=(adminMailModel::get()->toArray())[0]['email'];
 
-                if(strtolower($isMember)=='gaofeng' || strtolower($isMember)=='shuiwei' || strtolower($isMember)=='baoshan' || strtolower($isMember)=='pinghe' || strtolower($isMember)=='poai' || strtolower($isMember)=='happynewyear' ){
+                if(strtolower($isMember)=='gaofeng' || strtolower($isMember)=='shuiwei' || strtolower($isMember)=='baoshan' || strtolower($isMember)=='pinghe' || strtolower($isMember)=='poai' || strtolower($isMember)=='shuiyuan' || strtolower($isMember)=='tongan' || strtolower($isMember)=='mediatek' ){
                     $to = collect([
                         ['name' => 'admin', 'email' => $email]
                     ]);
