@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AdminMail extends Migration
+class AddColumnToStudentUser02 extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AdminMail extends Migration
      */
     public function up()
     {
-        Schema::create('adminmail', function (Blueprint $table) {
-            $table->string('email');
+        Schema::table('student_user', function (Blueprint $table) {
+            $table->string('lession_select')->default('1')->comment("1:中文課程 2: 英文課程");
         });
     }
 
@@ -25,6 +25,8 @@ class AdminMail extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('adminmail');
+        Schema::table('student_user', function (Blueprint $table) {
+            //
+        });
     }
 }

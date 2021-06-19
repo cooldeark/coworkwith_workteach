@@ -48,6 +48,7 @@
             <thead>
               <tr>
                 <th>文章標題</th>
+                <th>課程類別</th>
                 <th>文章內容</th>
                 <th>批改狀態</th>
                 <th>上傳時間</th>
@@ -58,9 +59,19 @@
               @foreach($getList as $index=>$value)
               <tr>
               <td class="articleTitle" style="width:20%;">{{$value['title'].' (字數:'.mb_strlen($value['content'],'UTF-8').')'}}</td>
-              <td style="width:15%;">
-                <div class="textShow">{{$value['content']}}</div>
-                <button class="showContent ml-5 btn-success">詳細內容..</button>
+              <td style="width:10%;">{{config('memberProfile.lession_type')[$value['lessionType']]}}</td>
+              <td style="width:13%;">
+                @if($value['uploadType']==2){{--uploadType 2 為照片，1為文字--}}
+                  <div class="textShow">{{$value['content']}}</div>
+                  <button class="showContent  btn-success" data-photo="{{$value['photo_path']}}">顯示照片</button>
+                @elseif($value['uploadType']==1)
+                  <div style="display:none;" class="textShow">{{$value['content']}}</div>
+                  <button class="showContent  btn-success">詳細內容..</button>
+                @elseif($value['uploadType']==3)
+                <div class="textShow" style="display:none;">{{$value['google_link']}}</div>
+                <button class="showContent  btn-success">顯示連結</button>
+                @endif
+                
               </td>
               <td style="width:10%;">
                 @if($value['status']==0)
@@ -79,14 +90,14 @@
                 @endif
               </td>
               <td style="width:14%;">
-                @if($value['teacherComments']==NULL || $value['teacherComments']=='null' || $value['teacherComments']=='NULL')
+                @if(($value['teacherComments']==NULL && $value['teacher_response_photo_path']==NULL) || ($value['teacherComments']=='null' && $value['teacher_response_photo_path']=='null')  || ($value['teacherComments']=='NULL' && $value['teacher_response_photo_path']=='NULL'))
                  無評語
                 @else
-                <div class="textShow">{{$value['teacherComments']}}</div>
-		@if($value['studentFeedback']==NULL || $value['studentFeedback']=='null' || $value['studentFeedback']=='NULL')
-		<button class="giveComments ml-5 btn-primary">給予回饋</button>
+                <div class="textShow" style="display:none;">{{$value['teacherComments']}}</div>
+                @if($value['studentFeedback']==NULL || $value['studentFeedback']=='null' || $value['studentFeedback']=='NULL')
+                <button class="giveComments  btn-primary">給予回饋</button>
                 @endif
-                <button class="showContent ml-5 btn-success">評語內容</button>
+                <button class="showContent2  btn-success" data-teacherphoto="{{$value['teacher_response_photo_path']}}">評語內容</button>
                 @endif
               </td>
               </tr>
@@ -181,11 +192,28 @@
 
       $('.showContent').click(function(){
         var nowContent=$(this).parent().find('.textShow').text();
+
+        if($(this).text()=='顯示照片'){
+          let photo_html='<img src="{{ asset('storage/student_upload_article') }}'+'/'+$(this).data('photo')+'"'+' alt="studentPhoto" width="100%;">';
+          $('.modalArticleContent').html(photo_html);
+        }else if($(this).text()=='顯示連結'){
+          $('.modalArticleContent').html("<a target='_blank' href='"+nowContent+"'>"+nowContent+"</a>");
+        }else{
           $('.modalArticleContent').html(nowContent.replace(/\n/g,"<br/>"));
+        }
           $('#articleContent').trigger('click');
       });
 
-      
+      $('.showContent2').click(function(){
+        var nowContent=$(this).parent().find('.textShow').text();
+        if($(this).data('teacherphoto')!=null && $(this).data('teacherphoto')!="" && $(this).data('teacherphoto')!=undefined){
+          let photo_html='<img src="{{ asset('storage/teacher_response_photo') }}'+'/'+$(this).data('teacherphoto')+'"'+' alt="teacherPhoto" width="100%;">';
+          $('.modalArticleContent').html(photo_html);
+        }else{
+          $('.modalArticleContent').html(nowContent.replace(/\n/g,"<br/>"));
+        }
+          $('#articleContent').trigger('click');
+      });
 
 
     </script>

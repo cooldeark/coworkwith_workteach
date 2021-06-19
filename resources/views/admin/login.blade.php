@@ -19,12 +19,12 @@
   <body style="background: #b9c8e0;">
     <div class="wrapper fadeInDown">
         <div id="formContent">
-        <form class="mt-5" method="POST" action="{{url('/login')}}" autocomplete="off">
+        <form class="mt-5" method="POST" action="{{url('/login')}}">
             {{csrf_field()}}
             <h4 class="fadeIn second" style="">信箱</h4>
             <input type="text" id="login" class="fadeIn second" name="userEmail" placeholder="Email">
             <h4 class="fadeIn third">密碼</h4>
-            <input type="text" id="password" class="fadeIn third" name="userPwd" placeholder="password" >
+            <input type="text" id="password" class="fadeIn third" name="userPwd" placeholder="password" autocomplete="off">
             <input type="submit" class="fadeIn fourth" value="Log In">
           </form>
           @if($errors->first('error'))

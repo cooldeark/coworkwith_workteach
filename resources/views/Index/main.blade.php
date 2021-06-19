@@ -12,42 +12,6 @@
   </head>
   @include('template.topper')
   <body>
-<!--start -->
-<script src="//cdn.holmesmind.com/js/rtid.js"></script>
-<script src="//dmp.eland-tech.com/dmpreceiver/eland_tracker.js"></script>
-<script src="https://cdn.holmesmind.com/dmp/cft/triggerTracker.js"></script>
-<script>
-clickforce_rtid("9465001");
-ElandTracker.Track({'source':'CAP9465',
-'trackType':'view',
-'trackSubfolderDepth':3,
-'targetType':'pageview'
-});
-</script>
-<!-- Website track (tracker.js) - B.I.DMP By ClickForce -->
-<script async src="https://cdn.holmesmind.com/dmp/cft/tracker.js"></script>
-<script>
-  var clickforceThat=this;
-  window.cft=window.cft||function(){(cft.q=cft.q||[]).push([].slice.call(arguments))};
-  function clickForceMyyCFT(){
-      cft('setSiteId', 'CF-210300085348');
-      cft('setViewPercentage');
-    }
-    clickForceDelayLoading();
-</script>
-<script>
-    function clickForceTriggerEvent(){
-      cft('send', 'event', {
-        action: 'pageview',
-        category: '',
-        label: '',
-      });
-    }
-      clickForceTriggerCFT();
-</script>
-<!--end -->
-    
-
     <main role="main">
 
       <div id="myCarousel" class="carousel slide" data-ride="carousel">

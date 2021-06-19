@@ -14,12 +14,14 @@ use Redirect;
 use Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\sendMail;
+use Validator;
+use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller
 {
     public function registerPage(){
         if(Auth::check()){
-            return view('Index/main');
+            return Redirect::to('/');
         }else{
             return view('register.splitIndex');
         }
@@ -32,15 +34,15 @@ class RegisterController extends Controller
                 $oldPW=$request->oldPassword;
                 $newPW=Hash::make($request->newpassword);
             if(Hash::check($oldPW, Auth::user()->password)){
-                DB::table('studentTeacher_register')->where('email','=',Auth::user()->email)->update([
+                DB::table('studentteacher_register')->where('email','=',Auth::user()->email)->update([
                     'password'=>$newPW
                 ]);
-                return view('Index/main');
+                return Redirect::to('/');
 	    }else{
 		    return redirect()->action('App\Http\Controllers\LoginController@show')->withErrors(['oldPWError'=>'舊密碼錯誤']);
         }
         }else{
-            return view('Index/main');
+            return Redirect::to('/');
         }
         
         
@@ -48,9 +50,9 @@ class RegisterController extends Controller
 
     public function forgotPassword(Request $request){
         if(Auth::check()){
-            return view('Index/main');
+            return Redirect::to('/');
         }else{
-            $findUserData=DB::table('studentTeacher_register')->where('email','=',$request->useremail)->first();
+            $findUserData=DB::table('studentteacher_register')->where('email','=',$request->useremail)->first();
             if($findUserData==null || $findUserData=='null' || empty($findUserData)){
                 return Redirect::back()->withErrors(['forgotPWMessage'=>'無此使用者註冊資料']);
             }else{
@@ -58,7 +60,7 @@ class RegisterController extends Controller
                 if($findUser!=null){
                     $systemPW=rand(100000, 999999);
                     $newPW=Hash::make($systemPW);
-                    DB::table('studentTeacher_register')->where('email','=',$request->useremail)->update([
+                    DB::table('studentteacher_register')->where('email','=',$request->useremail)->update([
                         'password'=>$newPW
                     ]);
 
@@ -80,7 +82,7 @@ class RegisterController extends Controller
 
     public function registerStep(Request $request){
         if(Auth::check()){
-            return view('Index/main');
+            return Redirect::to('/');
         }else{
             $whoRegister=$request->whoRegister;
         if($whoRegister=='student'){
@@ -93,11 +95,33 @@ class RegisterController extends Controller
         
     }
 
+
+    public function testUploadView(Request $req){
+        return view('testUpload');
+    }
+
+    public function photoUpload(Request $request){
+        
+        $request->validate([
+            'upload' => 'mimes:jpg,jpeg,png,JPG,JPEG,PNG|max:10000'
+        ]);
+        
+        // Save the file locally in the storage/public/ folder under a new folder named /self_photo
+        $saveStatus=$request->upload->store('self_photo', 'public');//儲存在專案的storage/app/public/self_photo裡面
+        $fileName=$request->upload->hashName();//取得被hash過後的檔案名稱
+        if(gettype(strpos($saveStatus,'self_photo'))=='integer'){//為integer代表有上傳成功
+            dd('good');
+        }else{
+            dd('shit');
+        }
+        return $fileName;
+    }
+
+
     public function whoRegister(Request $request){
         
-        
         if(Auth::check()){
-            return view('Index/main');
+            return Redirect::to('/');
         }else{
             $whoRegister=$request->who;
         if($whoRegister=='學生'){
@@ -105,6 +129,7 @@ class RegisterController extends Controller
         }else{
             $whoRegister='1';
         }
+
         $password=Hash::make($request->password);
         $email=$request->email;
         $name=$request->name;
@@ -113,6 +138,7 @@ class RegisterController extends Controller
         $age=$request->age;
         $phone_number=$request->phone_number;
         $education=$request->education;
+        $member_rate=$request->member_rate;
         $profession=$request->profession;
         $address_main=$request->address_main;
         $address_sub=$request->address_sub;
@@ -121,9 +147,23 @@ class RegisterController extends Controller
         $habit=$request->habit;
         $write_position=$request->write_position;
         $isMember=$request->isMember;
+        $photo_path=null;
+        $lession_select=$request->lession_select;
+        
+        //大頭貼處理start
+        if($request->hasFile('photo_file')){
+            $request->validate([
+                'photo_file' => 'mimes:jpg,jpeg,png,JPG,JPEG,PNG|max:10000'
+            ]);
+            $saveStatus=$request->photo_file->store('self_photo', 'public');//儲存在專案的storage/app/public/self_photo裡面
+            if(gettype(strpos($saveStatus,'self_photo'))=='integer'){//為integer代表有上傳成功
+                $photo_path=$request->photo_file->hashName();//取得被hash過後的檔案名稱
+            }
+        }
+        //大頭貼處理end
 
-        $userEmailCheck=DB::table('studentTeacher_register')->where('email',$email)->first();
-        $userNameCheck=DB::table('studentTeacher_register')->where('name',$name)->first();
+        $userEmailCheck=DB::table('studentteacher_register')->where('email',$email)->first();
+        $userNameCheck=DB::table('studentteacher_register')->where('name',$name)->first();
         
         if($userEmailCheck==null&& $userNameCheck==null ){
 
@@ -175,7 +215,9 @@ class RegisterController extends Controller
                         'write_experience'=>$write_experience,
                         'write_purpose'=>$write_purpose,
                         'cooperation_school'=>$isMember,
-                        
+                        'member_rate'=>$member_rate,
+                        'photo_path'=>$photo_path,
+                        'lession_select'=>$lession_select
                     ]);
                 }else{//教師註冊
                     $teach_experience=$request->teach_experience;
@@ -201,7 +243,8 @@ class RegisterController extends Controller
                         'teach_experience'=>$teach_experience,
                         'teach_years'=>$teach_years,
                         'cooperation_school'=>$isMember,
-                        
+                        'photo_path'=>$photo_path,
+                        'lession_select'=>$lession_select
                     ]);
 
                 }
@@ -275,7 +318,7 @@ class RegisterController extends Controller
             ]);
             $sendMailParams=['type'=>'getNoticeRegisterSuccess'];
             Mail::to($to)->send(new sendMail($sendMailParams));
-            return view('Index/main');
+            return Redirect::to('/');
         }else{
             dd('error please contace administrator.');
         }        

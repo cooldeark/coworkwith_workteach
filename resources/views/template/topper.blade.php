@@ -76,14 +76,18 @@
             </button>
             @if(Session::get('userName')!=null)
             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <a class="dropdown-item" type="button"  data-toggle="modal" data-target="#changePWModal">修改密碼</a>              
+              <a class="dropdown-item" type="button"  href="{{url('/memberProfile')}}">個人首頁</a>              
               @if(Session::get('whoRegister')==0){{--學生--}}
-              <a class="dropdown-item" type="button"  href="{{url('/studentText')}}">發表文章</a>
+              @if((strtotime(Session::get('memberValidDate'))>time())  || Session::get('memberValidDate')==null){{--如果你的有效日，大於現在時間或是null，能發表文章--}}
+              <a class="dropdown-item" type="button"  href="{{url('/studentText')}}">繳交文章</a>
+              @endif
               <a class="dropdown-item" type="button"  href="{{url('/studentArticleList')}}">文章管理</a>
+              <a class="dropdown-item" type="button"  href="{{url('/memberAlreadyGetMissionList')}}">我的任務</a>
               @else{{--老師--}}
               <a class="dropdown-item" type="button"  href="{{url('/checkArticle')}}">批改管理</a>
               @endif
               <a class="dropdown-item" type="button"  href="{{url('/memberData')}}">會員資料</a>
+              <a class="dropdown-item" type="button"  data-toggle="modal" data-target="#changePWModal">修改密碼</a>
               <a class="dropdown-item" type="button" href="{{url('/logout')}}">登出</a>
             </div>
             @else
@@ -98,7 +102,7 @@
     </nav>
   </header>
   
-  <!-- Modal -->
+  <!--reset password Modal start-->
   <div class="modal fade" id="changePWModal" tabindex="-1" role="dialog" aria-labelledby="changePWModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -128,6 +132,7 @@
       </div>
     </div>
   </div>
+<!--reset password Modal end-->
 
   <script>
     $('#changePWBtn').click(function(){

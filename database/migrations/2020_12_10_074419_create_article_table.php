@@ -16,7 +16,7 @@ class CreateArticleTable extends Migration
         Schema::create('article', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->longText('content');
+            $table->longText('content')->nullable();
             $table->string('checkByWho');
             $table->string('createByWho');
             $table->longText('teacherComments')->nullable();

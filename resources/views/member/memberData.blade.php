@@ -5,12 +5,13 @@
     @include('template.library')
     {{--JS 放置區 --}}
   <script src="{{asset('js/register.js')}}"></script>
+  <script src="{{asset('js/selectPicker.js')}}"></script>
     {{--CSS 放置區--}}
     <link href="{{asset('css/main.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/register.css')}}">
     <link rel="stylesheet" href="{{asset('css/material.css')}}">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="{{asset('css/selectPicker.css')}}">
+  
 
   </head>
   @include('template.topper')
@@ -42,7 +43,27 @@
                   女生
                   @endif
                </h5>
+
+               @if($whoRegister=='學生')
+               <div class="mb-3"><h2>會員身分</h2></div>
+               <div class="select-list">
+                  <select name="member_rate" id="member_rate" disabled>
+                     <option slected value="1">基礎會員</option>
+                     <option value="2">進階會員</option>
+                     <option value="3">白金會員</option>
+                  </select>
+               </div>
+               @endif
                
+
+               <div class="mb-3"><h2>{{$whoRegister}}教程</h2></div>
+               <div class="select-list">
+                  <select class="selectpicker form-control" name="lession_select" title="可複選" id="lession_select" disabled multiple>
+                     <option slected value="1">中文課程</option>
+                     <option value="2">英文課程</option>
+
+                  </select>
+               </div>
                
                <div class="select-list">
                   <div class="mb-3"><h3>年齡</h3></div>
@@ -233,6 +254,12 @@
                </div>
                @endif
 
+
+               <div class="mb-3"><h2>大頭貼上傳</h2></div>
+               <div class="select-list">
+                  <input class="" multiple accept=".jpg,.jpeg,.png" type="file" name="photo_file" id="photo_file" />
+               </div>
+
             </div>
             
             {{--take value--}}
@@ -257,6 +284,18 @@
        var habitValue='{{$getUserData->habit}}';
        habitValue=habitValue.split(',');
        $('#habit').val(habitValue);
+
+       $('#lession_select').val({{$getUserData->lession_select}});
+       var lession_select='{{$getUserData->lession_select}}';
+       lession_select=lession_select.split(',');
+       $('#lession_select').val(lession_select);
+      
+       @if($whoRegister=='學生')
+       var member_rate='{{$getUserData->member_rate}}';
+       member_rate=member_rate.split(',');
+       $('#member_rate').val(member_rate);
+       @endif
+
        var write_positionValue='{{$getUserData->write_position}}';
        write_positionValue=write_positionValue.split(',');
        $('#write_position').val(write_positionValue);
@@ -278,6 +317,35 @@
        $('#teach_years').val({{$getUserData->teach_years}});
        @endif
 
+
+       function validateFile(){
+         const allowedExtensions =  ['jpg','png','jpeg','JPG','PNG','JPEG'],
+               sizeLimit = 1000000; // 1 megabyte，1MB的意思
+
+         // destructuring file name and size from file object
+         const { name:fileName, size:fileSize } = this.files[0];
+
+         /*
+         * if filename is apple.png, we split the string to get ["apple","png"]
+         * then apply the pop() method to return the file extension
+         *
+         */
+         const fileExtension = fileName.split(".").pop();
+
+         /* 
+            check if the extension of the uploaded file is included 
+            in our array of allowed file extensions
+         */
+         if(!allowedExtensions.includes(fileExtension)){
+            alert("照片只能上傳jpg/jpeg/png 哦!");
+            this.value = null;
+         }else if(fileSize > sizeLimit){
+            alert("檔案大小需小於1MB，可至此網址壓縮 https://squoosh.app/")
+            this.value = null;
+         }
+   }
+
+   document.getElementById("photo_file").addEventListener("change", validateFile);
 
 
 
@@ -312,28 +380,40 @@
                $('#errormessageDiv').css('display','none');
                
                var takeAllValue=$('#appointment-form').serializeArray();
+               var takeAllFormValue = new FormData($('#appointment-form')[0]);
 
                @if($whoRegister=='學生'){
                   takeAllValue=takeAllValue.filter(function(element){
                      return element.name!="habit" && element.name!="write_position" && element.name!="read_position";
                   });
-                  takeAllValue.push({name:'habit',value:$('#habit').val()});
-                  takeAllValue.push({name:'write_position',value:$('#write_position').val()});
-                  takeAllValue.push({name:'read_position',value:$('#read_position').val()});
+                  // takeAllValue.push({name:'habit',value:$('#habit').val()});
+                  // takeAllValue.push({name:'write_position',value:$('#write_position').val()});
+                  // takeAllValue.push({name:'read_position',value:$('#read_position').val()});
+
+                  takeAllFormValue.append('habit',$('#habit').val());
+                  takeAllFormValue.append('write_position',$('#write_position').val());
+                  takeAllFormValue.append('read_position',$('#read_position').val());
+
                }@else{
                   takeAllValue=takeAllValue.filter(function(element){
                      return element.name!="habit" && element.name!="write_position" && element.name!="teach_position";
                   });
-                  takeAllValue.push({name:'habit',value:$('#habit').val()});
-                  takeAllValue.push({name:'write_position',value:$('#write_position').val()});
-                  takeAllValue.push({name:'teach_position',value:$('#teach_position').val()});
+                  // takeAllValue.push({name:'habit',value:$('#habit').val()});
+                  // takeAllValue.push({name:'write_position',value:$('#write_position').val()});
+                  // takeAllValue.push({name:'teach_position',value:$('#teach_position').val()});
+
+                  takeAllFormValue.append('habit',$('#habit').val());
+                  takeAllFormValue.append('write_position',$('#write_position').val());
+                  takeAllFormValue.append('teach_position',$('#teach_position').val());
                }
                @endif
 
                
                $.ajax({
                   url:'/updateMember',
-                  data:takeAllValue,
+                  data:takeAllFormValue,
+                  processData: false,
+                  contentType: false,
                   type:'POST',
                   success:function(suMessage){
                      if(suMessage['status']==200){

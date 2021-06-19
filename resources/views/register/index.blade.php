@@ -4,13 +4,13 @@
     
     @include('template.library')
     {{--JS 放置區 --}}
-  <script src="{{asset('js/register.js')}}"></script>
+   <script src="{{asset('js/register.js')}}"></script>
+   <script src="{{asset('js/selectPicker.js')}}"></script>
     {{--CSS 放置區--}}
     <link href="{{asset('css/main.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/register.css')}}">
     <link rel="stylesheet" href="{{asset('css/material.css')}}">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="{{asset('css/selectPicker.css')}}">
 
   </head>
   @include('template.topper')
@@ -19,7 +19,7 @@
     
     <div class="main">
       <div class="container">
-         <form  class="appointment-form"  id="appointment-form" name="userRegister" autocomplete="off">
+         <form  class="appointment-form"  id="appointment-form" name="userRegister" enctype="multipart/form-data" autocomplete="off">
             {{csrf_field()}}
             
          <h2 class="mb-3">{{$whoRegister}}註冊</h2>
@@ -131,16 +131,40 @@
                   </div>
                </div>
                
-               <div class="mb-3"><h2>身分</h2></div>
+
+               <div class="mb-3"><h2>學歷</h2></div>
                <div class="select-list">
                   <select name="education" id="education">
+                     <option slected value="1">國小</option>
+                     <option value="2">國中</option>
+                     <option value="3">高中</option>
+                     <option value="4">大專院校</option>
+                     <option value="5">大學</option>
+                     <option value="6">研究所</option>
+                     <option value="7">博士班</option>
+                  </select>
+               </div>
+
+               @if($whoRegister=='學生')
+
+               <div class="mb-3"><h2>會員身分</h2></div>
+               <div class="select-list">
+                  <select name="member_rate" id="member_rate">
                      <option slected value="1">基礎會員</option>
                      <option value="2">進階會員</option>
                      <option value="3">白金會員</option>
                   </select>
                </div>
+               
+               <div class="mb-3"><h2>報名課程</h2></div>
+               <div class="select-list">
+                  <select class="selectpicker form-control" name="lession_select" title="可複選" id="lession_select" multiple>
+                     <option slected value="1">中文課程</option>
+                     <option value="2">英文課程</option>
 
-               @if($whoRegister=='學生')
+                  </select>
+               </div>
+
                <div class="mb-3"><h2>閱讀領域</h2></div>
                <div class="select-list">
                   <select class="selectpicker form-control" name="read_position" title="可複選" id="read_position" multiple>
@@ -212,6 +236,16 @@
                @endif
 
                @if($whoRegister!='學生')
+               <div class="mb-3"><h2>批改課程</h2></div>
+               <div class="select-list">
+                  <select class="selectpicker form-control" name="lession_select" title="可複選" id="lession_select" multiple>
+                     <option slected value="1">中文課程</option>
+                     <option value="2">英文課程</option>
+
+                  </select>
+               </div>
+
+
                <div class="mb-3"><h2>教學領域</h2></div>
                <div class="select-list">
                   <select class="selectpicker form-control" name="teach_position" title="可複選" id="teach_position" multiple>
@@ -262,6 +296,11 @@
             {{--take value--}}
             <input style="display:none;" type="text" name="who" value="{{$whoRegister}}"/>
 
+            <div class="mb-3"><h2>大頭貼上傳</h2></div>
+               <div class="select-list">
+                  <input class="" multiple accept=".jpg,.jpeg,.png" type="file" name="photo_file" id="photo_file" />
+               </div>
+
          </form>
          <div class="form-submit">
             <button id="btnSubmit" class="btn btn-primary mb-5">註冊</button>
@@ -278,6 +317,37 @@
     
     <script>
      var dateControl = document.querySelector('input[type="date"]');
+
+     function validateFile(){
+         const allowedExtensions =  ['jpg','png','jpeg','JPG','PNG','JPEG'],
+               sizeLimit = 1000000; // 1 megabyte，1MB的意思
+
+         // destructuring file name and size from file object
+         const { name:fileName, size:fileSize } = this.files[0];
+
+         /*
+         * if filename is apple.png, we split the string to get ["apple","png"]
+         * then apply the pop() method to return the file extension
+         *
+         */
+         const fileExtension = fileName.split(".").pop();
+
+         /* 
+            check if the extension of the uploaded file is included 
+            in our array of allowed file extensions
+         */
+         if(!allowedExtensions.includes(fileExtension)){
+            alert("照片只能上傳jpg/jpeg/png 哦!");
+            this.value = null;
+         }else if(fileSize > sizeLimit){
+            alert("檔案大小需小於1MB，可至此網址壓縮 https://squoosh.app/")
+            this.value = null;
+         }
+   }
+
+   document.getElementById("photo_file").addEventListener("change", validateFile);
+
+
       @if($whoRegister=='學生')
          dateControl.value = '1990-01-01';
          @else
@@ -369,9 +439,13 @@
                   errorMessage+=' 寫作領域尚未選擇 ';
                }
 
-               if($('#habit').val()==0){
-                  errorMessage+=' 興趣尚未選擇 ';
-               }
+            if($('#lession_select').val()==0){
+               errorMessage+=' 無選擇課程 ';
+            }
+
+            if($('#habit').val()==0){
+               errorMessage+=' 興趣尚未選擇 ';
+            }
 
             @if($whoRegister=='學生')
                if($('#read_position').val()==0){
@@ -391,32 +465,51 @@
             }else{
                $('#errormessageDiv').css('display','none');
                
-               var takeAllValue=$('#appointment-form').serializeArray();
-               takeAllValue.push({name:'address_main_name',value:$('#city option:selected').html()});
-               takeAllValue.push({name:'address_sub_name',value:$("#region_"+$('#city').val()+ " option:selected").html()});
+               var takeAllValue=$('#appointment-form').serializeArray();//not use now
+               var takeAllFormValue = new FormData($('#appointment-form')[0]);
+
+               // takeAllValue.push({name:'address_main_name',value:$('#city option:selected').html()});
+               // takeAllValue.push({name:'address_sub_name',value:$("#region_"+$('#city').val()+ " option:selected").html()});
                
+               takeAllFormValue.append('address_main_name',$('#city option:selected').html());
+               takeAllFormValue.append('address_sub_name',$("#region_"+$('#city').val()+ " option:selected").html());
+               takeAllFormValue.append('lession_select',$('#lession_select').val());
+
                @if($whoRegister=='學生'){
                   takeAllValue=takeAllValue.filter(function(element){
                      return element.name!="habit" && element.name!="write_position" && element.name!="read_position";
                   });
-                  takeAllValue.push({name:'habit',value:$('#habit').val()});
-                  takeAllValue.push({name:'write_position',value:$('#write_position').val()});
-                  takeAllValue.push({name:'read_position',value:$('#read_position').val()});
+                  // takeAllValue.push({name:'habit',value:$('#habit').val()});
+                  // takeAllValue.push({name:'write_position',value:$('#write_position').val()});
+                  // takeAllValue.push({name:'read_position',value:$('#read_position').val()});
+
+                  takeAllFormValue.append('habit',$('#habit').val());
+                  takeAllFormValue.append('write_position',$('#write_position').val());
+                  takeAllFormValue.append('read_position',$('#read_position').val());
+
                }@else{
                   takeAllValue=takeAllValue.filter(function(element){
                      return element.name!="habit" && element.name!="write_position" && element.name!="teach_position";
                   });
-                  takeAllValue.push({name:'habit',value:$('#habit').val()});
-                  takeAllValue.push({name:'write_position',value:$('#write_position').val()});
-                  takeAllValue.push({name:'teach_position',value:$('#teach_position').val()});
+                  // takeAllValue.push({name:'habit',value:$('#habit').val()});
+                  // takeAllValue.push({name:'write_position',value:$('#write_position').val()});
+                  // takeAllValue.push({name:'teach_position',value:$('#teach_position').val()});
+
+                  takeAllFormValue.append('habit',$('#habit').val());
+                  takeAllFormValue.append('write_position',$('#write_position').val());
+                  takeAllFormValue.append('teach_position',$('#teach_position').val());
 
                }
                @endif
 
                
+               
+
                $.ajax({
                   url:'/whoRegister',
-                  data:takeAllValue,
+                  data:takeAllFormValue,
+                  processData: false,
+                  contentType: false,
                   type:'POST',
                   success:function(suMessage){
                      if(suMessage['status']==200){
@@ -436,7 +529,9 @@
             
          });
 
-         
+   @if ($errors->any())
+         alert('上傳檔案須為jpg,jpeg,png，並小於1MB');
+    @endif
 
 
     </script>

@@ -13,7 +13,7 @@ class CreateStudentTeacherRegister extends Migration
      */
     public function up()
     {
-        Schema::create('studentTeacher_register', function (Blueprint $table) {
+        Schema::create('studentteacher_register', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('email');
             $table->string('name');
@@ -33,6 +33,6 @@ class CreateStudentTeacherRegister extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('studentTeacher_register');
+        Schema::dropIfExists('studentteacher_register');
     }
 }
