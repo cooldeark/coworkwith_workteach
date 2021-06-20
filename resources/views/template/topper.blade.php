@@ -30,12 +30,6 @@
             <a class="nav-link" href="https://cowrite30.com/https-cowrite30-lessons/" target="_blank">寫作課程 <span class="sr-only"></span></a>
 	    </li>
           <li class="nav-item active">
-            <a class="nav-link" href="https://taihowwantour.wixsite.com/home/ambassador" target="_blank">英文導覽 <span class="sr-only"></span></a>
-	    </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="https://taihowwantour.wixsite.com/home/culture" target="_blank">地方創生 <span class="sr-only"></span></a>
-	    </li>
-          <li class="nav-item active">
             <a class="nav-link" href="https://cowrite30.com/category/樂寫出版品/" target="_blank">商業出版 <span class="sr-only"></span></a>
 	    </li>
           <li class="nav-item active">

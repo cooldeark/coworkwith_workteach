@@ -87,7 +87,7 @@
           <img class="rounded-circle" src="{{asset('images/part01.png')}}" alt="Generic placeholder image" width="140" height="140">
             
             <p><div class="text-center"><h2>目標導向</h2></div><br>
-              制定個人學習目標，在能力可及範圍，自動化配對專業顧問，一步步完成階段性目標。</p>
+              透過遊戲化學習，領取任務包並累積經驗值，配對專業教練指導，逐步完成階段性目標。</p>
             
           </div>
           <div class="col-lg-4">
@@ -101,7 +101,35 @@
             <img class="rounded-circle" src="{{asset('images/part03.png')}}" alt="Generic placeholder image" width="140" height="140">
             
             <p><div class="text-center"><h2>永續學習</h2></div><br>
-              學無止盡，持續精進，在探索及成長的過程中，擴大個人影響力，成就個人終身志業。</p>
+              學無止盡，持續精進，觀摩精選文章，從探索及成長的過程中，擴大個人影響力。</p>
+            
+          </div>
+        </div>
+
+
+        <hr class="featurette-divider">
+        <div class="h1 text-center mb-5 mt-5"><b>樂寫服務</b></div>
+        
+        <div class="row">
+          <div class="col-lg-4">
+          <img src="{{asset('images/achievement.png')}}" alt="Generic placeholder image" width="140" height="140">
+            
+            <p><div class="text-center"><h2>任務包挑戰</h2></div><br>
+            提供成人組及學生組(國小、國中、高中)寫作任務包，<b>主題包含人文、自然、旅遊等12類型</b>，繳交文章後，多位線上教練可供選擇給予回饋。挑戰解鎖1~10級，每滿5級額外提供2000元線上課程當作獎勵。<br><br>任務包費用請見下方會員說明</p>
+            
+          </div>
+          <div class="col-lg-4">
+            <img src="{{asset('images/contract.png')}}" alt="Generic placeholder image" width="140" height="140">
+            
+            <p><div class="text-center"><h2>中/英文專業潤稿</h2></div><br>
+            提供中/英文字作品潤稿，<b>包含自傳、履歷、書評、講稿、出版品等等</b>。協助組織文章架構並優化文句，修正常見錯誤，讓寫作更有靈感，讓文章更加出色。<br><br><b>專業潤稿按件計價 300~1500元不等</b>，細節歡迎至<b>「<a href="https://cowrite30.com/contactus/" target="_blank">聯繫我們</a>」</b>討論</p>
+            
+          </div>
+          <div class="col-lg-4">
+            <img src="{{asset('images/lecture.png')}}" alt="Generic placeholder image" width="140" height="140">
+            
+            <p><div class="text-center"><h2>互動課程</h2></div><br>
+            提供學員交流平台，參與教練課程，<b>包含採訪技巧、書評撰寫、科普寫作、商業文案等專業課程</b>，結業後可提供接案機會，並發表作品於Pubu電子書、今周刊等媒體平台。<br><br>按課程計價 2000~6000元不等，課程資訊請詳見<b>「<a href="https://cowrite30.com/https-cowrite30-lessons/" target="_blank">寫作課程</a>」</b>連結</p>
             
           </div>
         </div>
@@ -110,67 +138,29 @@
 
         <!-- START THE FEATURETTES -->
 
-        <hr class="featurette-divider">
-        <h1 class="text-center mb-5"><b>課程介紹</b></h1>
-        <div class="row featurette">
-          <div class="col-md-7">
-            
-            <h1 class="featurette-heading"><b><a href="https://cowrite30.com/portfolio/cowrite-student-lessons/" target="_blank">素養式寫作課程</a></b> <span class="text-muted"> 學生組</span></h1>
-            <p class="lead">培養學生思辨並恰當運用文字表達之能力，讓孩子學會各科學習統整，加強學習成果表現，以及增進人際互動溝通力。本課程採主題性課程計畫，透過小班制教學，達到因材施教的效果！</p>
-          </div>
-          <div class="col-md-5">
-            
-          </div>
-        </div>
 
         <hr class="featurette-divider">
-
-        <div class="row featurette">
-          <div class="col-md-7 order-md-2">
-            <h1 class="featurette-heading"><b><a href="https://cowrite30.com/portfolio/cowrite-dream-lessons/" target="_blank">滾動式職涯訓練</a></b> <span class="text-muted"> 成人組</span></h1>
-            <p class="lead">高中畢業後，有多久沒再練習寫作文，有了文字基礎能力，更要繼續精進學習，從每個月的文章進步，從流水帳到隨心所欲建構文章，從素人晉升為新銳作家，結業後還可以成為特約撰稿或專業書評，並且參加自己的發表會，寫作之路原來可以很有趣！</p>
-          </div>
-          <div class="col-md-5 order-md-1">
-            
-          </div>
-        </div>
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-          <div class="col-md-7">
-            <h1 class="featurette-heading"><b><a href="https://cowrite30.com/portfolio/cowrite30-coach-training-lessons/" target="_blank">進階式教練培訓</a></b> <span class="text-muted"> 成人組</span></h1>
-            <p class="lead">啟發寫作創意，引導文章架構，協助潤飾文句，修正常見錯誤，這些都是身為教練必備的能力。如果您喜歡教學實務，歡迎參加教練課程，除了可以跟一流講師切磋，還能探索文字浩瀚奧秘！</p>
-          </div>
-          <div class="col-md-5">
-            
-          </div>
-        </div>
-
-        <hr class="featurette-divider">
-
         <!-- /END THE FEATURETTES -->
-        <div class="h1 text-center mb-5 mt-5"><b>會員方案</b></div>
+        <div class="h1 text-center mb-5 mt-5"><b>中/英文 任務包會員方案</b></div>
         
         <div class="row">
           <div class="col-lg-4">            
             <p><div class="text-center"><h2>基礎會員</h2></div><br>
-              <br>年費600元</br>學習歷程講評指導<br></br><br>提供成人組及學生組寫作技巧指南，累積實力，完成的文章有機會收錄在樂寫專欄內。</br></p>
+              <br>中文：單月300元 / 年繳2000元</br>英文：單月500元 / 年繳3200元<br></br>每月4次任務包挑戰及1對1文字回饋指導<br>每滿5級送價值2000元線上課程</br></p>
             
           </div>
           <div class="col-lg-4">
             <p><div class="text-center"><h2>進階會員</h2></div><br>
-              <br>年費2000元</br>學習歷程講評指導 + 隨選式錄影課程<br></br><br> 提供學員交流社群，參與教練小班課，結業後可提供接案機會、參與商業寫作並發表作品於媒體平台。</br></p>
+            <br>中文：單月500元 / 年繳3200元</br>英文：單月800元 / 年繳5000元<br></br>每月<b>8次</b>任務包挑戰及1對1文字回饋指導<br>每滿5級送價值2000元線上課程<br>免費參與樂寫講堂(寫作技巧分享及線上說書會)<br><b>1次小班制課程/月</b></br></p>
             
           </div>
           <div class="col-lg-4">
             <p><div class="text-center"><h2>白金會員</h2></div><br>
-              <br>年費6000元</br>學習歷程講評指導 + 隨選式錄影課程 + <br>10次真人教師線上指導</br><br>提供學員交流社群，參與教練1對1指導，結業後可提供接案機會、參與商業寫作並發表作品於媒體平台。</br></p>
+            <br>中文：單月800元 / 年繳5000元</br>英文：單月1000元 / 年繳7000元<br></br>每月<b>10次</b>任務包挑戰及1對1文字回饋指導<br>每滿5級送價值2000元線上課程<br>免費參與樂寫講堂(寫作技巧分享及線上說書會)<br><b>1次小班制課程/月<br>1次一對一線上視訊指導/月<br>參與樂寫年度出書計畫</b></br></p>
             
           </div>
         </div>
-
-
+        <div class="text-center">三人團報享9折優惠，五人團報享85折優惠，十人團報享8折優惠，請至<b>「<a href="https://cowrite30.com/contactus/" target="_blank">聯繫我們</a>」</b>告知名單</div>
         <hr class="featurette-divider">
 
 
