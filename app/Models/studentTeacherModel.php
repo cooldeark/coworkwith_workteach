@@ -129,6 +129,7 @@ class studentTeacherModel extends Model
     public function studentOrTeacherProfile($who){
         if($who=='0'){//學生
             $getMemberProfile=studentTable::where('email','=',Auth::user()->email)->first()->toArray();
+            Session::put('memberLessionType',$getMemberProfile['lession_select']);
             Session::put('memberValidDate',$getMemberProfile['memberValidTime']);
             $memberRate=config('memberProfile.memberRate')[$getMemberProfile['member_rate']];
             Session::put('memberRate',$memberRate);

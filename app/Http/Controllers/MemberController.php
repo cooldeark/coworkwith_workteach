@@ -31,7 +31,8 @@ class MemberController extends Controller
     public function memberProfile(){
         $studentTeacherModel=new studentTeacherModel();
         $getProfile=$studentTeacherModel->studentOrTeacherProfile(Auth::user()->whoRegister);
-        $getRecommendArticleList=recommendArticleModel::where('status','1')->get()->toArray();
+        $memberLessionType=explode(',',Session::get('memberLessionType'));
+        $getRecommendArticleList=recommendArticleModel::where('status','1')->whereIn('lession_type',$memberLessionType)->get()->toArray();
         // dd($getRecommendArticleList);
         return view('/member/loginSuccess',compact('getProfile','getRecommendArticleList'));
     }
