@@ -135,13 +135,13 @@
                <div class="mb-3"><h2>學歷</h2></div>
                <div class="select-list">
                   <select name="education" id="education">
-                     <option slected value="1">國小</option>
-                     <option value="2">國中</option>
-                     <option value="3">高中</option>
-                     <option value="4">大專院校</option>
-                     <option value="5">大學</option>
-                     <option value="6">研究所</option>
-                     <option value="7">博士班</option>
+                     <option slected value="1">小學生</option>
+                     <option value="2">國中生</option>
+                     <option value="3">高中生</option>
+                     <option value="4">大學生</option>
+                     <option value="5">碩博士</option>
+                     <option value="6">上班族</option>
+                     <option value="7">退休</option>
                   </select>
                </div>
 
