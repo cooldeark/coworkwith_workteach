@@ -147,6 +147,7 @@ class studentTeacherModel extends Model
 
         }else{//教師
             $getMemberProfile=teacherTable::where('email','=',Auth::user()->email)->first()->toArray();
+            Session::put('memberLessionType',$getMemberProfile['lession_select']);
             $memberRate='指導老師';
             Session::put('memberRate',$memberRate);
             $memberLevel=$this->countLevel($getMemberProfile['name'],$getMemberProfile['email'],$who);
