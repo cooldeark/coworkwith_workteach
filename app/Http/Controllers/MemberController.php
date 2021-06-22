@@ -402,6 +402,17 @@ class MemberController extends Controller
     public function studentArticleList(){
         if(Auth::check() && Auth::user()->whoRegister=='0'){
             $getList=articleModel::where('createByWho',Auth::user()->name)->get()->toArray();
+            foreach($getList as $index=>$value){
+                $checkInputEnglishOrChinese=preg_match("/\p{Han}+/u", $value['content']);//判斷是否有中文
+                if($checkInputEnglishOrChinese){//return 1就是有中文，進入true
+                    $nowCountContentNumber=mb_strlen($value['content']);
+                }else{//這裡代表無中文，是英文文章
+                    $nowCountContentNumber=str_word_count($value['content']);
+                }
+                $getList[$index]['stringCountNumber']=$nowCountContentNumber;
+                
+            }
+
             return view('member/articleList',compact('getList'));
         }else{
             return Redirect::to('/');
