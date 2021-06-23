@@ -65,7 +65,7 @@
                   </li>
                   @if(Session::get('missionlist')=='no_mission')
                   <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                    <span class="text-secondary" id="chineseDescription">現在沒有任務可以領取，等老師出題吧!</span>
+                    <span class="text-secondary" id="chineseDescription">現在沒有新的任務可以領取，您可以到右上角「我的任務」查看您已經選取的任務，或者自由繳交文章喔！</span>
                   </li>
                   @else
                   @foreach(Session::get('missionlist') as $missionLessionType=>$missionValue)
