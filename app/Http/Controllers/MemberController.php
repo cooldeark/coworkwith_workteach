@@ -209,40 +209,44 @@ class MemberController extends Controller
     public function studentText(Request $request){
         if(Auth::check()){
             if((strtotime(Session::get('memberValidDate'))>time())  || Session::get('memberValidDate')==null){//只有當你的會員期限大於今日或是null才可以發文
-                $userData=Auth::user();
-                $teacherList=teacherTable::all()->toArray();
-                $teacherLessionChinese=array();
-                $teacherLessionEnglish=array();
-                foreach($teacherList as $index=>$value){//這裡可以分流，讓學生選擇到符合中文課程強悍的老師或是英文課程強悍的老師
-                    // dd($value);
-                    $nowLession=explode(',',$value['lession_select']);
-                    foreach($nowLession as $nowIndex=>$nowValue){
-                        if($nowValue==1){//中文課程
-                            $teacherLessionChinese[$value['id']]=$value['name'];
-                        }else if($nowValue==2){//英文課程
-                            $teacherLessionEnglish[$value['id']]=$value['name'];
+                if( Session::get('memberValidCount') > Session::get('memberLevel')['getCompleteMissionCounts'] || Session::get('memberValidCount')==null){//只有當你的合法次數大於任務挑戰次數才可以發文
+                   $userData=Auth::user();
+                    $teacherList=teacherTable::all()->toArray();
+                    $teacherLessionChinese=array();
+                    $teacherLessionEnglish=array();
+                    foreach($teacherList as $index=>$value){//這裡可以分流，讓學生選擇到符合中文課程強悍的老師或是英文課程強悍的老師
+                        // dd($value);
+                        $nowLession=explode(',',$value['lession_select']);
+                        foreach($nowLession as $nowIndex=>$nowValue){
+                            if($nowValue==1){//中文課程
+                                $teacherLessionChinese[$value['id']]=$value['name'];
+                            }else if($nowValue==2){//英文課程
+                                $teacherLessionEnglish[$value['id']]=$value['name'];
+                            }
                         }
                     }
-                }
 
-            // dd($teacherLessionChinese);
-            Session::put('teacherLessionChinese',$teacherLessionChinese);
-            Session::put('teacherLessionEnglish',$teacherLessionEnglish);
+                    // dd($teacherLessionChinese);
+                    Session::put('teacherLessionChinese',$teacherLessionChinese);
+                    Session::put('teacherLessionEnglish',$teacherLessionEnglish);
 
-            $getStudentInfo=studentTable::where('email',Auth::user()->email)->first();
-            $getStudentLessionType=explode(',',$getStudentInfo['lession_select']);
+                    $getStudentInfo=studentTable::where('email',Auth::user()->email)->first();
+                    $getStudentLessionType=explode(',',$getStudentInfo['lession_select']);
 
-                if($request->mission!=null){
-                    $getMissionInfo=getMissionBox_user::where('id',$request->mission)->where('who_get_mission',Auth::user()->email)->where('complete_status','!=','1')->first();
-                    if($getMissionInfo==null){//如果任務id找不到，或是status已完成，直接導回到首頁
-                        return Redirect::to('/');
+                    if($request->mission!=null){
+                        $getMissionInfo=getMissionBox_user::where('id',$request->mission)->where('who_get_mission',Auth::user()->email)->where('complete_status','!=','1')->first();
+                        if($getMissionInfo==null){//如果任務id找不到，或是status已完成，直接導回到首頁
+                            return Redirect::to('/');
+                        }else{
+                            $getMissionInfo=$getMissionInfo->toArray();
+                        }
+                        // dd($getMissionInfo);
+                        return view('/member/article',compact('userData','getStudentLessionType','teacherLessionChinese','teacherLessionEnglish','getMissionInfo'));
                     }else{
-                        $getMissionInfo=$getMissionInfo->toArray();
+                        return view('/member/article',compact('userData','getStudentLessionType','teacherLessionChinese','teacherLessionEnglish'));
                     }
-                    // dd($getMissionInfo);
-                    return view('/member/article',compact('userData','getStudentLessionType','teacherLessionChinese','teacherLessionEnglish','getMissionInfo'));
                 }else{
-                    return view('/member/article',compact('userData','getStudentLessionType','teacherLessionChinese','teacherLessionEnglish'));
+                    return Redirect::to('/');
                 }
             }else{
                 return Redirect::to('/');

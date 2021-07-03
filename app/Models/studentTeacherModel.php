@@ -25,6 +25,7 @@ class studentTeacherModel extends Model
         //category=0的為二次繳交，不算分
         $nowAllScores=0;
         $getCompleteMissionScores=0;
+        $getCompleteMissionCounts=0;
         if($who=='0'){//學生
             $getMemberAllArticle=articleModel::where('createByWho',$who_name)->where('status','1')->whereNotNull('scores')->where('category','<>','0')->get()->toArray();
             $getMemberCompleteMission=getMissionBox_user::where('who_get_mission',$who_email)->where('complete_status','1')->get()->toArray();
@@ -32,6 +33,7 @@ class studentTeacherModel extends Model
             
             foreach($getMemberCompleteMission as $missionIndex=>$missionValue){
                 $getCompleteMissionScores+=$missionValue['bonus_score'];
+                $getCompleteMissionCounts+=1;
             }
 
             foreach($getMemberAllArticle as $index=>$value){
@@ -74,7 +76,8 @@ class studentTeacherModel extends Model
         }
         $levelInfo=array(
             'memberLevel'=>$memberLevel,
-            'howLongCanUpGrade'=>$howLongCanUpGrade
+            'howLongCanUpGrade'=>$howLongCanUpGrade,
+            'getCompleteMissionCounts'=>$getCompleteMissionCounts
         );
         
         return $levelInfo;
@@ -131,6 +134,7 @@ class studentTeacherModel extends Model
             $getMemberProfile=studentTable::where('email','=',Auth::user()->email)->first()->toArray();
             Session::put('memberLessionType',$getMemberProfile['lession_select']);
             Session::put('memberValidDate',$getMemberProfile['memberValidTime']);
+            Session::put('memberValidCount',$getMemberProfile['memberValidMission']);
             $memberRate=config('memberProfile.memberRate')[$getMemberProfile['member_rate']];
             Session::put('memberRate',$memberRate);
 

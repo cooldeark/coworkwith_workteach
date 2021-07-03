@@ -56,7 +56,7 @@
                 <th>文章分數</th>
                 <th>文章評語</th>
               </tr>
-              @foreach($getList as $index=>$value)
+              @foreach(array_reverse($getList) as $index=>$value)
               <tr>
               <td class="articleTitle" style="width:20%;">{{$value['title'].' (字數:'.$value['stringCountNumber'].')'}}</td>
               <td style="width:10%;">{{config('memberProfile.lession_type')[$value['lessionType']]}}</td>

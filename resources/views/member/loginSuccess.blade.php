@@ -40,12 +40,20 @@
                         @endif
                          {{Session::get('memberLevel')['memberLevel']}}
                       </p>
+                        @if(Session::get('whoRegister')==0){{--學生--}}
+                      <p class="text-secondary mb-1">您已完成{{Session::get('memberLevel')['getCompleteMissionCounts']}}次挑戰<br>離升級還有 {{Session::get('memberLevel')['howLongCanUpGrade']}} Exp</p>
+                        @else
                       <p class="text-secondary mb-1">離升級還有 {{Session::get('memberLevel')['howLongCanUpGrade']}} Exp</p>
+                        @endif
                       <p class="text-secondary mb-1">
                         @if(Session::get('whoRegister')==0){{--學生才有所謂的會籍時限--}}
                         @if($getProfile['memberValidTime']==null)
                         @else
-                        會籍到期日:{{date('Y-m-d',strtotime($getProfile['memberValidTime']))}}
+                        會籍到期日:{{date('Y-m-d',strtotime($getProfile['memberValidTime']))}}<br>
+                        @endif
+                        @if($getProfile['memberValidMission']==null)
+                        @else
+                        到期日前可以完成{{$getProfile['memberValidMission']}}次挑戰
                         @endif
                         @endif
                       </p>

@@ -18,7 +18,7 @@
         <ul class="navbar-nav mr-auto">
           @if(Session::get('userName')==null)
           <li class="nav-item active">
-            <a class="nav-link" href="{{url('/registerPage')}}">立即註冊 <span class="sr-only"></span></a>
+            <a class="nav-link" href="{{url('/registerPage')}}">會員註冊 <span class="sr-only"></span></a>
             </li>
 	  {{--<li class="nav-item active">
             <a class="nav-link" href="{{url('/login')}}">快速登入 <span class="sr-only"></span></a>
@@ -73,7 +73,9 @@
               <a class="dropdown-item" type="button"  href="{{url('/memberProfile')}}">個人首頁</a>              
               @if(Session::get('whoRegister')==0){{--學生--}}
               @if((strtotime(Session::get('memberValidDate'))>time())  || Session::get('memberValidDate')==null){{--如果你的有效日，大於現在時間或是null，能發表文章--}}
-              <a class="dropdown-item" type="button"  href="{{url('/studentText')}}">繳交文章</a>
+                @if( Session::get('memberValidCount') > Session::get('memberLevel')['getCompleteMissionCounts'] || Session::get('memberValidCount')==null){{--如果你任務挑戰次數，大於合法次數，能發表文章--}}
+                <a class="dropdown-item" type="button"  href="{{url('/studentText')}}">繳交文章</a>
+                @endif
               @endif
               <a class="dropdown-item" type="button"  href="{{url('/studentArticleList')}}">文章管理</a>
               <a class="dropdown-item" type="button"  href="{{url('/memberAlreadyGetMissionList')}}">我的任務</a>

@@ -28,7 +28,7 @@
                 <h1><b>專業指導</b></h1>
                 <h2 style="color:white;background-color:rgba(0,0,0,0.2);"><b>我們不僅是教練，更是陪伴你一路向前的朋友</b></h2><br></br>
                 @if(session::get('userName')==null)
-	      <p><a class="btn btn-lg btn-primary" href="{{url('/registerPage')}}" role="button">立即註冊</a></p>
+	      <p><a class="btn btn-lg btn-primary" href="{{url('/registerPage')}}" role="button">會員註冊</a></p>
                 @endif
               </div>
             </div>
@@ -40,7 +40,7 @@
                 <h1 style="color:white;"><b>學員交流</b></h1>
 		            <h2 style="color:white;background-color:rgba(0,0,0,0.2);"><b>讓學習不再孤單，讓文字更有溫度</b></h2><br></br>
                 @if(Session::get('userName')==null)
-                <p><a class="btn btn-lg btn-primary" href="{{url('/registerPage')}}" role="button">立即註冊</a></p>
+                <p><a class="btn btn-lg btn-primary" href="{{url('/registerPage')}}" role="button">會員註冊</a></p>
                 @endif
               </div>
             </div>
@@ -58,7 +58,7 @@
                   </div>
                 <img class="col-md-8 featurette-image img-fluid mx-auto" src="{{asset('images/test.jpg')}}" alt="talk02 image"/>
 		@if(Session::get('userName')==null)
-		<p><a class="btn btn-lg btn-primary" href="{{url('/registerPage')}}" role="button">立即註冊</a></p>
+		<p><a class="btn btn-lg btn-primary" href="{{url('/registerPage')}}" role="button">會員註冊</a></p>
                 @endif
               </div>
               </div>
@@ -94,14 +94,14 @@
             <img class="rounded-circle" src="{{asset('images/part02.png')}}" alt="Generic placeholder image" width="140" height="140">
             
             <p><div class="text-center"><h2>職涯發展</h2></div><br>
-              培養軟實力，結合線上課程、文字訓練及業師指導，提升職場競爭力。</p>
+              誰說高中畢業就不再上作文課？培養軟實力，結合線上課程及業師指導，提升職場競爭力。</p>
             
           </div>
           <div class="col-lg-4">
             <img class="rounded-circle" src="{{asset('images/part03.png')}}" alt="Generic placeholder image" width="140" height="140">
             
             <p><div class="text-center"><h2>永續學習</h2></div><br>
-              學無止盡，持續精進，觀摩精選文章，從探索及成長的過程中，擴大個人影響力。</p>
+              學好寫作的秘密就是練習及引導，持續精進，觀摩精選文章，人人都可以成為他人的寫作教練。</p>
             
           </div>
         </div>
@@ -128,8 +128,8 @@
           <div class="col-lg-4">
             <img src="{{asset('images/lecture.png')}}" alt="Generic placeholder image" width="140" height="140">
             
-            <p><div class="text-center"><h2>互動課程</h2></div><br>
-            提供學員交流平台，參與教練課程，<b>包含採訪技巧、書評撰寫、科普寫作、商業文案等專業課程</b>，結業後可提供接案機會，並發表作品於Pubu電子書、今周刊等媒體平台。<br><br>按課程計價 2000~6000元不等，課程資訊請詳見<b>「<a href="https://cowrite30.com/https-cowrite30-lessons/" target="_blank">寫作課程</a>」</b>連結</p>
+            <p><div class="text-center"><h2>中/英文互動課程</h2></div><br>
+            有別於傳統教學方式，我們採顧問型態授課，學生先完成任務挑戰，教練會根據學生作品客製化教學，<b>課程包含國中小基礎寫作、高中學測衝刺及檢定、採訪技巧、書評撰寫、科普寫作等專業課程</b>，成人組結業後可提供接案機會，並發表作品於Pubu電子書、今周刊等媒體平台。<br><br>按課程計價 2000~6000元不等，課程資訊請詳見<b>「<a href="https://cowrite30.com/https-cowrite30-lessons/" target="_blank">寫作課程</a>」</b>連結</p>
             
           </div>
         </div>
@@ -146,21 +146,22 @@
         <div class="row">
           <div class="col-lg-4">            
             <p><div class="text-center"><h2>基礎會員</h2></div><br>
-              <br>中文：單月300元 / 年繳2000元</br>英文：單月500元 / 年繳3200元<br></br>每月4次任務包挑戰及1對1文字回饋指導<br>每滿5級送價值2000元線上課程</br></p>
+              <br>中文：單月300元 / 年繳2000元</br>英文：單月500元 / 年繳3200元<br></br>每月<b>4次</b>任務挑戰及教練文字回饋指導<br>每滿5級送價值2000元線上課程</br></p>
             
           </div>
           <div class="col-lg-4">
             <p><div class="text-center"><h2>進階會員</h2></div><br>
-            <br>中文：單月500元 / 年繳3200元</br>英文：單月800元 / 年繳5000元<br></br>每月<b>8次</b>任務包挑戰及1對1文字回饋指導<br>每滿5級送價值2000元線上課程<br>免費參與樂寫講堂(寫作技巧分享及線上說書會)<br><b>1次小班制課程/月</b></br></p>
+            <br>中文：單月500元 / 年繳3200元</br>英文：單月800元 / 年繳5000元<br></br>每月<b>8次</b>任務挑戰及教練文字回饋指導<br>每滿5級送價值2000元線上課程<br>免費參與樂寫講堂(寫作技巧分享及線上說書會)<br><b>1次小班制(上限6人)課程/月</b></br></p>
             
           </div>
           <div class="col-lg-4">
             <p><div class="text-center"><h2>白金會員</h2></div><br>
-            <br>中文：單月800元 / 年繳5000元</br>英文：單月1000元 / 年繳7000元<br></br>每月<b>10次</b>任務包挑戰及1對1文字回饋指導<br>每滿5級送價值2000元線上課程<br>免費參與樂寫講堂(寫作技巧分享及線上說書會)<br><b>1次小班制課程/月<br>1次一對一線上視訊指導/月<br>參與樂寫年度出書計畫</b></br></p>
+            <br>中文：單月800元 / 年繳5000元</br>英文：單月1000元 / 年繳7000元<br></br>每月<b>10次</b>任務挑戰及教練文字回饋指導<br>每滿5級送價值2000元線上課程<br>免費參與樂寫講堂(寫作技巧分享及線上說書會)<br><b>1次一對一線上視訊指導/月<br>參與樂寫年度出書計畫</b></br></p>
             
           </div>
         </div>
         <div class="text-center">三人團報享9折優惠，五人團報享85折優惠，十人團報享8折優惠，請至<b>「<a href="https://cowrite30.com/contactus/" target="_blank">聯繫我們</a>」</b>告知名單</div>
+        <div class="text-center">※2021/8/31前報名享以上早鳥優惠</div>
         <hr class="featurette-divider">
 
 
@@ -171,9 +172,8 @@
           <img class="rounded-circle" src="{{asset('images/man01.jpg')}}" alt="Generic placeholder image" width="140" height="140">
             <h2>吳孟霖</h2>
             <p><div class="text-center">簡介:</div><br>
-              旅⾏足跡遍布歐美、中東、亞洲，先後出版《 土耳其進行曲 》、《 原來，我們都忘了馬祖 》、
-              《 那⼀所名為旅⾏的大學 》，2012年入選為墨刻台灣百⼤旅行家，2015年受邀到
-TED x TKU分享《 累積的⼒量 》。現為樂寫創辦人、聯發科技志工社寫作教育計劃主持人。</p>
+              旅⾏歐美、中東、印度，先後出版《土耳其進行曲》、《原來，我們都忘了馬祖》、
+              《那⼀所名為旅⾏的大學》，曾入選墨刻台灣百⼤旅行家，並在TEDxTKU分享《累積的⼒量》。現為樂寫創辦人、聯發科技志工社寫作教育計劃主持人。</p>
             
           </div>
           <div class="col-lg-4">
@@ -186,23 +186,22 @@ TED x TKU分享《 累積的⼒量 》。現為樂寫創辦人、聯發科技志
             
           </div>
           <div class="col-lg-4">
-            <img class="rounded-circle" src="{{asset('images/man03.jpg')}}" alt="Generic placeholder image" width="140" height="140">
-            <h2>林億昕</h2>
+            <img class="rounded-circle" src="{{asset('images/man05.jpg')}}" alt="Generic placeholder image" width="140" height="140">
+            <h2>王思穎</h2>
             <p><div class="text-center">簡介:</div><br>
-              斜槓教學工作者，有時候是高中公民老師、補習班作文老師，有時候是職探中心服裝老師，
-              在專業領域轉換之間，說話、書寫作為表達的橋樑，閱讀作為思考的工具，
-              而教學和課程設計本身是一連串不斷修正的過程，期待遇見更多教育路上的夥伴。</p>
+            輔仁大學英國語文學系畢，輔修外交與國際事務學程，曾接待俄國和拉丁美洲外賓14天，透過英語雜誌、線上英語影片、遊戲等，指導國小英語一年以上，
+            亦擔任瘋城部落國際大使培訓講師，藉由實用觀光導覽英語，介紹台灣。</p>
             
           </div>
-	</div>
-
+	      </div>
+        <div class="text-center">更多教練介紹，請至<b>「<a href="https://cowrite30.com/2019/12/22/2020-writingcoach/" target="_blank">教練團隊</a>」</b></div>
         <hr class="featurette-divider">
 
         <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="h1 text-center mb-5 mt-5"><b>熱血故事</b></div>
             <div class="text-center mb-5 mt-5" style="margin-left:auto; margin-right:auto; font-size:22px;">
-	      <p>圓一個想出書的夢，也圓一個別人可以被看見的夢！<br></br>
-這是圓夢寫手計畫成立的初衷，這五年來我們培育出上百位寫手，在台灣各地推動寫作教育，紀錄在地故事。一個人很渺小，但一群人就有無限可能，如果每個人都能從寫作中受益，它將能鼓勵更多人持續精進，甚至改變人生。讓文字更有溫度，樂在寫作、樂於分享，現在就是最好的開始！</p></div>
+	      <p>這是一個工程師作家的故事，也是他與一群夥伴的夢想。<br>曾幾何時，我們都忘了上一次寫作是什麼時候？有多久沒靜下心來，寫一篇文章了呢？<br></br>
+樂寫，取名樂在寫作，由創辦人Rick在網路號召，透過圓夢寫手計畫，圓每個人心中想要出書的夢，也讓默默努力的人被看見。一位學員說：「<b>圓夢寫手過程，陪我度過人生低潮，讓我知道重新站上舞台是多麼快樂的事。</b>」<br></br>這五年來我們培育出上百位寫手及教練，出版六本書，並在台灣各地推動寫作教育。一個人很渺小，但一群人就有無限可能。讓文字更有溫度，讓人人成為他人的寫作教練，現在就是最好的開始！</p></div>
         </div>
         <hr class="featurette-divider">
         <div class="col-lg-12 col-md-12 col-sm-12">
