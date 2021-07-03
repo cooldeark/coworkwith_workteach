@@ -15,7 +15,6 @@ class AddColumnToStudentUser03 extends Migration
     {
         Schema::table('student_user', function (Blueprint $table) {
             $table->timestamp('memberValidTime')->comment('預設為null，為一開始有註冊的user可以無限使用，後續使用者由admin決定日期')->nullable();
-            $table->timestamp('memberValidMission')->comment('預設為null，為一開始有註冊的user可以無限使用，後續使用者由admin決定次數')->nullable();
         });
     }
 
