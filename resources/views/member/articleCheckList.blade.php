@@ -65,7 +65,7 @@
               </tr>
               @foreach(array_reverse($getList) as $index=>$value)
               <tr>
-              <td class="articleTitle" style="width:20%;">{{$value['title'].' (字數:'.mb_strlen($value['content'],'UTF-8').')'}}</td>
+              <td class="articleTitle" style="width:20%;">{{$value['title'].' (字數:'.$value['stringCountNumber'].')'}}</td>
               <td style="width:10%;">{{config('memberProfile.lession_type')[$value['lessionType']]}}</td>
               <td style="width:12%;">
               @if($value['uploadType']==1){{--1為文字--}}

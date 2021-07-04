@@ -413,10 +413,8 @@ class MemberController extends Controller
                 }else{//這裡代表無中文，是英文文章
                     $nowCountContentNumber=str_word_count($value['content']);
                 }
-                $getList[$index]['stringCountNumber']=$nowCountContentNumber;
-                
+                $getList[$index]['stringCountNumber']=$nowCountContentNumber;                
             }
-
             return view('member/articleList',compact('getList'));
         }else{
             return Redirect::to('/');
@@ -427,7 +425,15 @@ class MemberController extends Controller
     public function checkArticle(){
         if(Auth::check() && Auth::user()->whoRegister=='1'){
             $getList=articleModel::where('checkByWho',Auth::user()->name)->get()->toArray();
-            // dd($getList);
+            foreach($getList as $index=>$value){
+                $checkInputEnglishOrChinese=preg_match("/\p{Han}+/u", $value['content']);//判斷是否有中文
+                if($checkInputEnglishOrChinese){//return 1就是有中文，進入true
+                    $nowCountContentNumber=mb_strlen($value['content']);
+                }else{//這裡代表無中文，是英文文章
+                    $nowCountContentNumber=str_word_count($value['content']);
+                }
+                $getList[$index]['stringCountNumber']=$nowCountContentNumber;                
+            }
             return view('member/articleCheckList',compact('getList'));
         }else{
             return Redirect::to('/');
