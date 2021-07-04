@@ -323,6 +323,7 @@
                   dataType:'json',
                   success:function(suMessage){
                      if(suMessage['status']==200){
+                        alert('您的文章已經傳送給老師囉！預計七天內給予指導及回饋。');
                         window.location.href="{{url('/studentArticleList')}}";
                      }else if(suMessage['status']==201){
                         alert(suMessage['message']);
