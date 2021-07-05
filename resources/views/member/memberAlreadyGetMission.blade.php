@@ -64,7 +64,7 @@
               <th>進行任務</th>
               {{-- <th>是否完成</th> --}}
               </tr>
-              @foreach(Session::get('alreadyGetMission') as $missionIndex=>$missionValue)
+              @foreach(array_reverse(Session::get('alreadyGetMission')) as $missionIndex=>$missionValue)
               <tr>
                 <td>{{$missionValue['mission_name']}}</td>
                 <td>
