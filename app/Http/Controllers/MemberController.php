@@ -313,6 +313,22 @@ class MemberController extends Controller
                     ];
                     return response(json_encode($data),201);
                 }
+            }else{
+                if($articleUploadType==1){
+                    $checkInputEnglishOrChinese=preg_match("/\p{Han}+/u", $articleContent);//判斷是否有中文
+                    if($checkInputEnglishOrChinese){//return 1就是有中文，進入true
+                        $nowCountContentNumber=mb_strlen($articleContent);
+                    }else{//這裡代表無中文，是英文文章
+                        $nowCountContentNumber=1000; //Magic number
+                    }
+                    if($nowCountContentNumber < 200){
+                        $data=[
+                            'status'=>201,
+                            'message'=>'尚未滿足中文字數最低200字條件!'
+                        ];
+                        return response(json_encode($data),201);
+                    }
+                }
             }
             /*
             以上為判斷任務是否完成，如完成則會更新任務包

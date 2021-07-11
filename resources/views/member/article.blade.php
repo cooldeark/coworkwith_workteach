@@ -44,7 +44,7 @@
          <h2 class="mb-3"></h2>
          @else
          <h2 class="mb-3">繳交文章</h2>
-         <p style="color:grey;">任務包文章請到「我的任務」頁面繳交，才能領取額外經驗值獎勵哦！</p>
+         <p style="color:grey;">中文字數最少200字，英文不設限，任務包文章請到「我的任務」頁面繳交，才能領取額外經驗值獎勵哦！</p>
          @endif
             <div class="form-group-1">
                @if(isset($getMissionInfo))

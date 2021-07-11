@@ -166,7 +166,7 @@ class RegisterController extends Controller
         $userNameCheck=DB::table('studentteacher_register')->where('name',$name)->first();
         
         if($userEmailCheck==null&& $userNameCheck==null ){
-            $schoolCode = array('gaofeng', 'shuiwei', 'baoshan', 'pinghe', 'poai', 'shuiyuan', 'tongan', 'beipu', 'dunghai', 'dahu', 'shihsing', 'donghe', 'fonggang', 'yungjen', 'chingtsao', 'mediatek', 'talent');
+            $schoolCode = array('gaofeng', 'shuiwei', 'baoshan', 'pinghe', 'poai', 'shuiyuan', 'tongan', 'beipu', 'dunghai', 'dahu', 'shihsing', 'donghe', 'fonggang', 'yungjen', 'chingtsao', 'mediatek', 'enjoywriting');
             if( in_array(strtolower($isMember), $schoolCode)){
                 $createUser=studentTeacher::create([
                     'email'=>$email,
